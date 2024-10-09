@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Note</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom background gradient for the main section */
+        body {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        }
+    </style>
+</head>
+
+<body>
+    <main class="w-full h-screen bg-transparent font-['Helvetica']">
+        <!-- Navbar -->
+        <nav class="flex px-10 justify-between items-center py-5 bg-white shadow-md rounded-b-xl">
+            <h3 class="text-3xl font-semibold tracking-tight text-blue-600">Notes App</h3>
+            <div class="navlinks flex gap-5 text-lg font-medium text-gray-700">
+                <a class="hover:text-blue-600 transition" href="/">Home</a>
+                <a class="hover:text-blue-600 transition" href="/create">New Note</a>
+                <a class="hover:text-blue-600 transition" href="/dashboard">Analytics Dashboard</a>
+            </div>
+        </nav>
+
+        <!-- Form Section -->
+        <div>
+            <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md mx-auto mt-10">
+                <h3 class="text-3xl font-bold text-center mb-6 text-gray-800">Create a New Note</h3>
+                <form action="/create" method="post">
+                    <!-- Note Name input -->
+                    <input name="date" class="text-md px-4 py-3 w-full mb-5 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Note Name" type="text" required>
+                    
+                    <!-- Content input -->
+                    <textarea name="content" class="block w-full px-4 py-3 resize-none border border-blue-300 bg-zinc-100 rounded-md min-h-40 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Write your note..." required></textarea>
+                    
+                    <input type="submit" class="mt-5 w-full py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200 cursor-pointer" value="Create Note">
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
