@@ -1,23 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full bg-gray-100">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Note</title>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <title>Create New Note</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom background gradient for the main section */
-        body {
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
-<body>
-    <main class="w-full h-screen bg-transparent font-['Helvetica']">
-        <!-- Navbar -->
+<body class="h-full">
+    <div class="min-h-full flex flex-col">
         <nav class="flex px-10 justify-between items-center py-5 bg-white shadow-md rounded-b-xl">
             <h3 class="text-3xl font-semibold tracking-tight text-blue-600">Notes App</h3>
             <div class="navlinks flex gap-5 text-lg font-medium text-gray-700">
@@ -27,22 +20,55 @@
             </div>
         </nav>
 
-        <!-- Form Section -->
-        <div>
-            <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md mx-auto mt-10">
-                <h3 class="text-3xl font-bold text-center mb-6 text-gray-800">Create a New Note</h3>
-                <form action="/create" method="post">
-                    <!-- Note Name input -->
-                    <input name="date" class="text-md px-4 py-3 w-full mb-5 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Note Name" type="text" required>
-                    
-                    <!-- Content input -->
-                    <textarea name="content" class="block w-full px-4 py-3 resize-none border border-blue-300 bg-zinc-100 rounded-md min-h-40 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Write your note..." required></textarea>
-                    
-                    <input type="submit" class="mt-5 w-full py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200 cursor-pointer" value="Create Note">
-                </form>
+        <main class="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl w-full space-y-8">
+                <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                    <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                        <h3 class="text-2xl leading-6 font-bold text-gray-900">Create New Note</h3>
+                        <p class="mt-1 max-w-2xl text-sm text-gray-500">Enter your note details</p>
+                    </div>
+                    <form action="/create" method="post" class="px-4 py-5 sm:p-6">
+                        <dl class="grid grid-cols-1 gap-x-4 gap-y-6">
+                            <div class="sm:col-span-2">
+                                <dt class="text-sm font-medium text-gray-500">Note Name</dt>
+                                <dd class="mt-1">
+                                    <input id="date" name="date" type="text" required 
+                                    class="appearance-none block w-full px-3 py-2 border-2 border-blue-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition duration-150 ease-in-out"
+                                    placeholder="Enter note name">
+                                </dd>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <dt class="text-sm font-medium text-gray-500">Content</dt>
+                                <dd class="mt-1">
+                                    <textarea id="content" name="content" rows="5" required 
+                                    class="appearance-none block w-full px-3 py-2 border-2 border-blue-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition duration-150 ease-in-out"
+                                    placeholder="Write your note..."></textarea>
+                                </dd>
+                            </div>
+                        </dl>
+                        <div class="mt-6 text-right">
+                            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out">
+                                <i class="ri-add-line mr-2"></i> Create Note
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
+
+        <footer class="bg-white">
+            <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-sm text-gray-500">&copy; 2024 Notes App. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Focus on the date input when the page loads
+        window.onload = function() {
+            document.getElementById('date').focus();
+        }
+    </script>
 </body>
 
 </html>

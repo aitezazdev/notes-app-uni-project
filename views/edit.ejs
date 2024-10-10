@@ -1,33 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full bg-gray-100">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Note</title>
-    <link rel="stylesheet" href="/public/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
-<body>
-    <main class="w-full h-screen bg-zinc-100 font-['Helvetica']">
-        <nav class="flex px-10 justify-between py-5">
-            <h3 class="text-2xl tracking-tight">Notes App</h3>
-            <div class="navlinks flex gap-5">
-                <a class="tracking-tight" href="/">Home</a>
-                <a class="tracking-tight" href="/create">Create New Note</a>
+<body class="h-full">
+    <div class="min-h-full flex flex-col">
+        <nav class="flex px-10 justify-between items-center py-5 bg-white shadow-md rounded-b-xl">
+            <h3 class="text-3xl font-semibold tracking-tight text-blue-600">Notes App</h3>
+            <div class="navlinks flex gap-5 text-lg font-medium text-gray-700">
+                <a class="hover:text-blue-600 transition" href="/">Home</a>
+                <a class="hover:text-blue-600 transition" href="/create">New Note</a>
+                <a class="hover:text-blue-600 transition" href="/dashboard">Analytics Dashboard</a>
             </div>
         </nav>
-        <div class="px-10 notes">
-            <h3 class="capitalize text-2xl font-medium mb-5 mt-10 tracking-tight">Edit Note</h3>
-            <form action="/update/<%= note.id %>" method="post">
-                <input name="date" class="text-md px-3 py-2 w-1/2 mb-5 rounded-md bg-zinc-200" type="text" value="<%= note.date %>" required>
-                <textarea name="content" class="text-md px-3 py-2 w-full h-32 mb-5 rounded-md bg-zinc-200" required><%= note.content %></textarea>
-                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md">Update Note</button>
-            </form>
-        </div>
-    </main>
+
+        <main class="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl w-full space-y-8">
+                <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                    <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                        <h3 class="text-2xl leading-6 font-bold text-gray-900">Edit Note</h3>
+                        <p class="mt-1 max-w-2xl text-sm text-gray-500">Update your note details</p>
+                    </div>
+                    <form action="/update/<%= note.id %>" method="post" class="px-4 py-5 sm:p-6">
+                        <dl class="grid grid-cols-1 gap-x-4 gap-y-6">
+                            <div class="sm:col-span-2">
+                                <dt class="text-sm font-medium text-gray-500">Note Name</dt>
+                                <dd class="mt-1">
+                                    <input id="date" name="date" type="text" value="<%= note.date %>" required 
+                                    class="appearance-none block w-full px-3 py-2 border-2 border-blue-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition duration-150 ease-in-out">
+                                </dd>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <dt class="text-sm font-medium text-gray-500">Content</dt>
+                                <dd class="mt-1">
+                                    <textarea id="content" name="content" rows="5" required 
+                                    class="appearance-none block w-full px-3 py-2 border-2 border-blue-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition duration-150 ease-in-out"><%= note.content %></textarea>
+                                </dd>
+                            </div>
+                        </dl>
+                        <div class="mt-6 text-right">
+                            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out">
+                                <i class="ri-save-line mr-2"></i> Update Note
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bg-white">
+            <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-sm text-gray-500">&copy; 2024 Notes App. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Focus on the date input when the page loads
+        window.onload = function() {
+            document.getElementById('date').focus();
+        }
+    </script>
 </body>
 
 </html>

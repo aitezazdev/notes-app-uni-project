@@ -21,21 +21,21 @@
         </nav>
 
         <main class="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl w-full space-y-8">
+            <div class="max-w-3xl w-full my-8">
                 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                     <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
                         <h3 class="text-2xl leading-6 font-bold text-gray-900"><%= note.name %></h3>
                         <p class="mt-1 max-w-2xl text-sm text-gray-500">Note Details</p>
                     </div>
                     <div class="px-4 py-5 sm:p-6">
-                        <dl class="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
-                            <div class="sm:col-span-1">
+                        <dl class="grid grid-cols-1 gap-x-4 gap-y-6">
+                            <div class="sm:col-span-2">
                                 <dt class="text-sm font-medium text-gray-500">Note Name</dt>
-                                <dd class="mt-1 text-sm text-gray-900"><%= note.date %></dd>
+                                <dd class="mt-1 text-sm text-gray-900 border-2 border-gray-300 rounded-md p-2"><%= note.date %></dd>
                             </div>
                             <div class="sm:col-span-2">
                                 <dt class="text-sm font-medium text-gray-500">Content</dt>
-                                <dd class="mt-1 text-sm text-gray-900 whitespace-pre-wrap"><%= note.content %></dd>
+                                <dd class="mt-1 text-sm text-gray-900 whitespace-pre-wrap border-2 border-gray-300 rounded-md p-2 min-h-[100px]"><%= note.content %></dd>
                             </div>
                         </dl>
                     </div>
