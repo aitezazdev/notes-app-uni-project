@@ -6,9 +6,16 @@
     <title>Notes Analytics Dashboard</title>
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .note-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 font-sans">
-
     <main class="min-h-screen">
         <nav class="flex px-10 justify-between items-center py-5 bg-white shadow-md rounded-b-xl">
             <h3 class="text-3xl font-semibold tracking-tight text-blue-600">Notes App</h3>
@@ -24,20 +31,20 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Total Notes Card -->
-                <div class="bg-white p-6 rounded-lg shadow-lg transition-transform transform">
-                    <h4 class="text-lg font-medium text-gray-700">Total Notes:</h4>
-                    <p class="text-3xl text-blue-600 font-bold"><%= stats.totalNotes %></p>
+                <div class="bg-white p-5 rounded-lg shadow-lg transition-transform transform">
+                    <h4 class="text-xl font-medium text-gray-700">Total Notes:</h4>
+                    <p class="text-7xl pt-4 text-blue-600 text-center font-bold"><%= stats.totalNotes %></p>
                 </div>
 
                 <!-- Shortest Note Card -->
-                <div class="bg-white p-6 rounded-lg shadow-lg transition-transform transform">
-                    <h4 class="text-lg font-medium text-gray-700">Shortest Note:</h4>
-                    <p class="text-xl text-blue-600">
+                <div class="bg-white p-5 rounded-lg shadow-lg transition-transform transform">
+                    <h4 class="text-xl font-medium text-gray-700">Shortest Note:</h4>
+                    <p class="text-lg text-center py-5 text-blue-600">
                         <% if (stats.shortestId !== -1 && stats.noteDetails[stats.shortestId]) { %>
                             <span>Length: <%= stats.shortestNote %> characters</span>
                             <br>
-                            <span class="text-sm text-gray-500">Note Name: <%= stats.noteDetails[stats.shortestId].date %></span>
-                            <a href="/note/<%= stats.noteDetails[stats.shortestId].id %>" class="mt-2 inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-blue-600 transition duration-200">View</a>
+                            <span class="text-sm text-gray-500 note-name">Note Name: <%= stats.noteDetails[stats.shortestId].date %></span>
+                            <a href="/note/<%= stats.noteDetails[stats.shortestId].id %>" class="mt-2 inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-blue-600 transition duration-200 hover:shadow-lg">View</a>
                         <% } else { %>
                             <span class="text-gray-500">No shortest Note available.</span>
                         <% } %>
@@ -47,12 +54,12 @@
                 <!-- Longest Note Card -->
                 <div class="bg-white p-6 rounded-lg shadow-lg transition-transform transform">
                     <h4 class="text-lg font-medium text-gray-700">Longest Note:</h4>
-                    <p class="text-xl text-blue-600">
+                    <p class="text-xl text-blue-600 text-center">
                         <% if (stats.longestId !== -1 && stats.noteDetails[stats.longestId]) { %>
                             <span>Length: <%= stats.longestNote %> characters</span>
                             <br>
-                            <span class="text-sm text-gray-500">Note Name: <%= stats.noteDetails[stats.longestId].date %></span>
-                            <a href="/note/<%= stats.noteDetails[stats.longestId].id %>" class="mt-2 inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-blue-600 transition duration-200">View</a>
+                            <span class="text-sm text-gray-500 note-name">Note Name: <%= stats.noteDetails[stats.longestId].date %></span>
+                            <a href="/note/<%= stats.noteDetails[stats.longestId].id %>" class="mt-2 inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-blue-600 transition duration-200 hover:shadow-lg">View</a>
                         <% } else { %>
                             <span class="text-gray-500">No longest Note available.</span>
                         <% } %>

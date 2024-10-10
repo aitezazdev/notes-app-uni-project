@@ -1,32 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full bg-gray-100">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Note Details</title>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
-<body>
-    <main class="w-full h-screen bg-zinc-100 font-['Helvetica']">
-        <nav class="flex px-10 justify-between py-5">
-            <h3 class="text-2xl tracking-tight">Notes App</h3>
-            <div class="navlinks flex gap-5">
-                <a class="tracking-tight" href="/">Home</a>
-                <a class="tracking-tight" href="/create">Create New Note</a>
-                <a class="tracking-tight" href="/dashboard">Analytics Dashboard</a>
+<body class="h-full">
+    <div class="min-h-full flex flex-col">
+        <nav class="flex px-10 justify-between items-center py-5 bg-white shadow-md rounded-b-xl">
+            <h3 class="text-3xl font-semibold tracking-tight text-blue-600">Notes App</h3>
+            <div class="navlinks flex gap-5 text-lg font-medium text-gray-700">
+                <a class="hover:text-blue-600 transition" href="/">Home</a>
+                <a class="hover:text-blue-600 transition" href="/create">New Note</a>
+                <a class="hover:text-blue-600 transition" href="/dashboard">Analytics Dashboard</a>
             </div>
         </nav>
 
-        <div class="px-10 notes">
-            <h3 class="text-2xl font-medium mb-5 mt-10 tracking-tight"><%= note.name %></h3>
-            <h4 class="text-xl font-semibold">Note Name: <%= note.date %></h4>
-            <p class="font-medium text-xl mb-10 mt-5"><%= note.content %></p>
-            <a class="text-zinc-400" href="/edit/<%= note.id %>">Edit this Note</a>
-        </div>
-    </main>
+        <main class="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl w-full space-y-8">
+                <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                    <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                        <h3 class="text-2xl leading-6 font-bold text-gray-900"><%= note.name %></h3>
+                        <p class="mt-1 max-w-2xl text-sm text-gray-500">Note Details</p>
+                    </div>
+                    <div class="px-4 py-5 sm:p-6">
+                        <dl class="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
+                            <div class="sm:col-span-1">
+                                <dt class="text-sm font-medium text-gray-500">Note Name</dt>
+                                <dd class="mt-1 text-sm text-gray-900"><%= note.date %></dd>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <dt class="text-sm font-medium text-gray-500">Content</dt>
+                                <dd class="mt-1 text-sm text-gray-900 whitespace-pre-wrap"><%= note.content %></dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                        <a href="/edit/<%= note.id %>" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out">
+                            <i class="ri-edit-line mr-2"></i> Edit Note
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bg-white">
+            <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-sm text-gray-500">&copy; 2024 Notes App. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
 </body>
 
 </html>
